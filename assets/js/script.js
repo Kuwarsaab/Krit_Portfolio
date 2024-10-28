@@ -191,23 +191,71 @@ document.onkeydown = function (e) {
 }
 
 
-  document.getElementById("contact-form").addEventListener("submit", function(e) {
+// document.getElementById("contact-form").addEventListener("submit", function(e) {
+//     e.preventDefault();
+//     const url = "https://script.google.com/macros/s/AKfycbzpPd4YS5nv1YqmfcgWd-ocMsU-azQiVhwqCzdFZCq9H-QLPbWNvH3aIKIcNLBwEGv7/exec"; // Replace with your Google Apps Script URL
+//     const formData = new FormData(document.getElementById("contact-form"));
+//     const data = Object.fromEntries(formData.entries());
+
+//     fetch(url, {
+//         method: "POST",
+//         mode: "no-cors",
+//         headers: {
+//         "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(data),
+//     })
+//     .then(response => alert("Form submitted successfully!"))
+//     .catch(error => alert("Form submission failed: " + error.message));
+// });
+
+document.getElementById("contact-form").addEventListener("submit", function(e) {
     e.preventDefault();
     const url = "https://script.google.com/macros/s/AKfycbzpPd4YS5nv1YqmfcgWd-ocMsU-azQiVhwqCzdFZCq9H-QLPbWNvH3aIKIcNLBwEGv7/exec"; // Replace with your Google Apps Script URL
     const formData = new FormData(document.getElementById("contact-form"));
     const data = Object.fromEntries(formData.entries());
 
     fetch(url, {
-      method: "POST",
-      mode: "no-cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
     })
-    .then(response => alert("Form submitted successfully!"))
-    .catch(error => alert("Form submission failed: " + error.message));
-  });
+    .then(response => {
+        showModal("Form submitted successfully!");
+    })
+    .catch(error => {
+        showModal("Form submission failed: " + error.message);
+    });
+});
+
+// Function to show the modal
+function showModal(message) {
+    document.getElementById("modal-message").innerText = message;
+    document.getElementById("myModal").style.display = "block";
+
+    // Reload the form after 2 seconds
+    setTimeout(() => {
+        document.getElementById("myModal").style.display = "none";
+        document.getElementById("contact-form").reset(); // Reset the form
+        window.location.reload(); // Reload the page
+    }, 2000); // Adjust the timeout duration as needed
+}
+
+// Close the modal when the user clicks on <span> (x)
+document.querySelector(".close").onclick = function() {
+    document.getElementById("myModal").style.display = "none";
+}
+
+// Close the modal when the user clicks anywhere outside of the modal
+window.onclick = function(event) {
+    if (event.target === document.getElementById("myModal")) {
+        document.getElementById("myModal").style.display = "none";
+    }
+}
+
 
 
 
