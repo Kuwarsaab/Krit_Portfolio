@@ -409,11 +409,11 @@ header .navbar ul li a:hover {
 .about .row .content .box-container .box p {
   text-transform: none;
 }
-.about .row .content .box-container .box p span {
-  color: #011aff;
+.about .row .content .box-container .box p strong {
+  color: #414db8;
 }
 .resumebtn {
-  margin-top: 6rem;
+  margin-top: 5rem;
 }
 .resumebtn .btn {
   padding: 1.7rem 3rem;

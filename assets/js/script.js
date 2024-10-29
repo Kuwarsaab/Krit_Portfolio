@@ -190,25 +190,6 @@ document.onkeydown = function (e) {
     }
 }
 
-
-// document.getElementById("contact-form").addEventListener("submit", function(e) {
-//     e.preventDefault();
-//     const url = "https://script.google.com/macros/s/AKfycbzpPd4YS5nv1YqmfcgWd-ocMsU-azQiVhwqCzdFZCq9H-QLPbWNvH3aIKIcNLBwEGv7/exec"; // Replace with your Google Apps Script URL
-//     const formData = new FormData(document.getElementById("contact-form"));
-//     const data = Object.fromEntries(formData.entries());
-
-//     fetch(url, {
-//         method: "POST",
-//         mode: "no-cors",
-//         headers: {
-//         "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(data),
-//     })
-//     .then(response => alert("Form submitted successfully!"))
-//     .catch(error => alert("Form submission failed: " + error.message));
-// });
-
 document.getElementById("contact-form").addEventListener("submit", function(e) {
     e.preventDefault();
     const url = "https://script.google.com/macros/s/AKfycbzpPd4YS5nv1YqmfcgWd-ocMsU-azQiVhwqCzdFZCq9H-QLPbWNvH3aIKIcNLBwEGv7/exec"; // Replace with your Google Apps Script URL
